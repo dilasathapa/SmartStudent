@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import logo_img from "../assets/logo-smartstudent.png"
 
 type ProductKey =
   | "edustudio"
@@ -87,11 +88,11 @@ export default function LandingNavbar() {
 
             <div
               className="cursor-pointer"
-              onClick={() => navigate("/test2")}
+              onClick={() => navigate("/")}
             >
               <img
                 alt="SmartStudent"
-                src="/assets/logo-smartstudent.png"
+                src={logo_img}
                 className="h-14 w-auto object-contain"
               />
             </div>
