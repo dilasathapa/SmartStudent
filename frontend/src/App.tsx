@@ -21,12 +21,12 @@ function App() {
   return (
     <HashRouter>
       <Routes>        
-        <Route path="/" element={<Home />} />
+        <Route path="/test2" element={<Home />} />
         <Route path="/test3" element={<TestSmartStudentHomepage />} />
         <Route path='/home' element={<StudentHomepage />} />
         <Route path='/test' element={<StudentTestpage />} />
         <Route path='/product' element={<ProductPage />} />
-        <Route path='/test2' element={<StudentTest2page />} />
+        <Route path='/' element={<StudentTest2page />} />
         <Route path='/product/edustudio' element={<EduStudioPage />} />
         <Route path='/product/gurukul' element={<GurukulPage /> } />
         <Route path='/product/smartpapers' element={<SmartPapersPage />} />
