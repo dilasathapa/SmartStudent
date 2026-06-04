@@ -1,5 +1,5 @@
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route
 } from 'react-router-dom'
@@ -19,7 +19,7 @@ import EZPrepPage from './Home/Products/ezprep'
 function App() {
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>        
         <Route path="/" element={<Home />} />
         <Route path="/test3" element={<TestSmartStudentHomepage />} />
@@ -32,7 +32,7 @@ function App() {
         <Route path='/product/smartpapers' element={<SmartPapersPage />} />
         <Route path='/product/ezprep' element={<EZPrepPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
