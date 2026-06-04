@@ -1,0 +1,104 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Over+the+Rainbow&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.clip-path-pen {
+  clip-path: polygon(
+    50% 0%,
+    100% 70%,
+    65% 100%,
+    50% 85%,
+    35% 100%,
+    0% 70%
+  );
+}
+
+@keyframes scan-sweep {
+  0% {
+    left: 0%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+/* Cuts the video layer layout in half to match the exact coordinate location of the sweeping neon line */
+.mask-reveal-effect {
+  animation: clip-sweep 5s linear infinite;
+}
+
+@keyframes clip-sweep {
+  0% {
+    clip-path: inset(0 0 0 0%);
+  }
+  50% {
+    clip-path: inset(0 0 0 100%);
+  }
+  100% {
+    clip-path: inset(0 0 0 0%);
+  }
+}
+
+@keyframes drift-slow {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-10px) translateX(6px); }
+}
+
+@keyframes drift-fast {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(8px) translateX(-4px); }
+}
+
+@keyframes pulse-bar {
+  0%, 100% { height: 30%; }
+  50% { height: 100%; }
+}
+
+@keyframes pulse-bar {
+  0% {
+    height: 20%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes scrollY {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-scrollY {
+  animation: scrollY 18s linear infinite;
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+}
