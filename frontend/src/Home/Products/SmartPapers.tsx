@@ -8,6 +8,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import LandingNavbar from "../LandingNavbar";
+import { Footer } from "../Footer";
 
 export default function SmartPapersPage() {
   const features = [
@@ -293,6 +294,7 @@ export default function SmartPapersPage() {
         </div>
 
       </section>
+      <Footer />
 
     </div>
     </>

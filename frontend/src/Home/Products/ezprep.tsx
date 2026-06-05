@@ -8,6 +8,7 @@ import {
   Trophy,
 } from "lucide-react";
 import LandingNavbar from "../LandingNavbar";
+import { Footer } from "../Footer";
 
 export default function EZPrepPage() {
   const features = [
@@ -339,7 +340,7 @@ export default function EZPrepPage() {
         </div>
 
       </section>
-
+      <Footer />
     </div>
       </>
   );

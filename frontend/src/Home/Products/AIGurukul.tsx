@@ -8,6 +8,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import LandingNavbar from "../LandingNavbar";
+import { Footer } from "../Footer";
 
 export default function GurukulPage() {
   const features = [
@@ -352,6 +353,7 @@ export default function GurukulPage() {
           </button>
         </div>
       </section>
+      <Footer />
     </div>
     </>
   );
