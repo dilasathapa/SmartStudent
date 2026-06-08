@@ -151,10 +151,6 @@ export default function EduStudioPage() {
     <div className="bg-white text-black overflow-hidden">
       {/* Hero */}
       <section className="relative pt-24 flex items-center">
-
-        
-        
-
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-zinc-100">
             <Sparkles className="w-4 h-4 text-zinc-800" />
