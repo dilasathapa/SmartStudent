@@ -317,10 +317,6 @@ function AnimatedCounter({ value }: AnimatedCounterProps) {
   return <motion.span ref={ref}>{rounded}</motion.span>;
 }
 
-
-const MORPH_STAGES = ["particles", "sun", "plant", "seed"];
-// Premium cinematic timing configurations
-// Add "as const" here to force TypeScript to recognize it as a strict cubic-bezier tuple
 const transitionConfig = { 
   duration: 1.2, 
   ease: [0.16, 1, 0.3, 1] as const 
@@ -329,69 +325,141 @@ const transitionConfig = {
 // new
 
 
-// ROTATING CONTENT
-const tiers = [
+
+
+
+
+
+// data/products.ts
+
+const products = [
   {
-    id: 1,
-    title: 'Teachers',
+    title: "Discover All Our Products",
     description:
-      'Create AI-powered educational videos, quizzes, presentations and classroom-ready learning resources instantly.',
-    icon: <GraduationCap size={40} strokeWidth={2.2} />,
+      "Explore an ecosystem designed to transform learning, teaching, assessment, and career readiness.",
+    
+    featured: true,
   },
-
   {
-    id: 2,
-    title: 'Institutes',
-    description:
-      'Scale content production across departments with centralized AI infrastructure for modern digital classrooms.',
-    icon: <Building2 size={40} strokeWidth={2.2} />,
-  },
-
-  {
-    id: 3,
-    title: 'Students',
-    description:
-      'Deliver engaging visual learning experiences with adaptive educational content and AI-assisted support.',
-    icon: <Users size={40} strokeWidth={2.2} />,
-  },
-]
-
-// ecosystem
-
-const ecosystemSteps = [
-  {
-    id: 1,
     title: "EduStudio",
-    subtitle: "Transform content into AI-powered learning videos",
-    color: "from-yellow-300 to-cyan-300",
+    description:
+      "Create lessons, videos, quizzes, and learning experiences powered by AI.",
+    image:
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200",
   },
   {
-    id: 2,
     title: "AI Gurukul",
-    subtitle: "A modern learning platform for students",
-    color: "from-green-300 to-emerald-300",
+    description:
+      "An intelligent learning companion that adapts to every learner's journey.",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200",
   },
   {
-    id: 3,
     title: "SmartPapers",
-    subtitle: "Generate assessments instantly",
-    color: "from-yellow-300 to-green-300",
+    description:
+      "Generate assessments, worksheets, and question papers in seconds.",
+    image:
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200",
   },
   {
-    id: 4,
-    title: "ezPrep",
-    subtitle: "AI-powered interview preparation",
-    color: "from-cyan-300 to-blue-300",
-  }
-]
+    title: "EZPrep",
+    description:
+      "Practice interviews with AI and receive personalized feedback for growth.",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200",
+  },
+  {
+    title: "SmartDeck",
+    description:
+      "Transform educational content into beautiful presentations instantly.",
+    image:
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200",
+  },
+];
 
-const showcaseComponents = [
-  <EdustudioSection />,
-  <AIGurukulShowcase />,
-  <SmartPapersShowcase />,
-  <EzPrepShowcase />
-  
-]
+// components/ProductCard.tsx
+
+type ProductCardProps = {
+  title: string;
+  description?: string;
+  image?: string;
+  featured?: boolean;
+};
+
+export function ProductCard({
+  title,
+  description,
+  image,
+  featured,
+}: ProductCardProps) {
+  return (
+      <motion.div
+        variants={{
+          hidden: {
+            opacity: 0,
+            y: 200,
+            scale: 0.9,
+          },
+          show: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+              duration: 0.8,
+            },
+          },
+        }}
+        className={`
+          overflow-hidden
+          rounded-[32px]
+          border
+          h-[620px]
+          ${
+            featured
+              ? "bg-gradient-to-br from-[#0e2e63] via-[#1e684f] to-[#dff8ec] text-white "
+              : "bg-white border-zinc-200"
+          }
+        `}
+      >
+        {featured ? (
+          <div className="h-full flex items-center justify-center p-10">
+            <h2 className="text-center text-5xl md:text-6xl font-bold leading-tight tracking-tight">
+              Discover All
+              <br />
+              Our Products
+            </h2>
+          </div>
+        ) : (
+          <>
+            <div className="h-[380px] overflow-hidden">
+              <img
+                src={image}
+                alt={title}
+                className="
+                  w-full
+                  h-full
+                  object-cover
+                  transition-transform
+                  duration-700
+                  hover:scale-105
+                "
+              />
+            </div>
+
+            <div className="p-8">
+              <h3 className="text-3xl font-bold text-emerald-700">
+                {title}
+              </h3>
+
+              <p className="mt-4 text-zinc-600 leading-relaxed">
+                {description}
+              </p>
+            </div>
+          </>
+        )}
+      </motion.div>
+  );
+}
 
 
 
@@ -400,40 +468,12 @@ export default function StudentTest2page() {
     const [activeScene, setActiveScene] = useState(0)
     const [phase, setPhase] = useState<'idle' | 'pulse' | 'video'>('idle')
     const [stage, setStage] = useState(0);
-    const [morphIndex, setMorphIndex] = useState(0);
     const videoRef = useRef<HTMLDivElement | null>(null)
-    const nextSectionRef = useRef<HTMLElement | null>(null)
 
     // active status for ecosystem
 
-    const [activeStep, setActiveStep] = useState(0)
 
-    useEffect(() => {
-    const handleScroll = () => {
-        const section = document.getElementById("ecosystem-section")
 
-        if (!section) return
-
-        const rect = section.getBoundingClientRect()
-
-        const progress =
-        Math.min(
-            Math.max(-rect.top / (section.offsetHeight - window.innerHeight), 0),
-            1
-        )
-
-        const current = Math.min(
-        ecosystemSteps.length - 1,
-        Math.floor(progress * ecosystemSteps.length)
-        )
-
-        setActiveStep(current)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-
-    return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
 
     // rotating content
 
@@ -446,9 +486,6 @@ export default function StudentTest2page() {
   }, []);
 
 
-    const [currentTime, setCurrentTime] = useState(0);
-    const totalDuration = 20; // 20-second simulated continuous video loop
-    // institutes scroll
 
     const [currentIndex, setCurrentIndex] = useState(1)
      const [isPaused, setIsPaused] = useState(false)
@@ -517,20 +554,9 @@ export default function StudentTest2page() {
     return () => clearInterval(interval)
     }, [])
 
-  // Continuous realistic video player timeline progress
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime((prev) => (prev >= totalDuration ? 0 : prev + 0.05));
-    }, 50);
-    return () => clearInterval(interval);
-  }, []);
+ 
 
-  // Track narrative states fluidly using explicit time windows
-   let currentStage = "question";
-  if (currentTime > 4 && currentTime <= 9) currentStage = "blueprint";
-  if (currentTime > 9 && currentTime <= 12) currentStage = "rendering";
-  if (currentTime > 12) currentStage = "animation";
-
+ 
     // next section scroll
    
 
@@ -545,18 +571,7 @@ export default function StudentTest2page() {
       }
     }, [stage])
 
-    // ____________
     
-    
-      useEffect(() => {
-        if (stage === 3) {
-            const interval = setInterval(() => {
-            setMorphIndex((prev) => (prev + 1) % MORPH_STAGES.length);
-            }, 2200);
-    
-            return () => clearInterval(interval);
-        }
-        }, [stage]);
     
       useEffect(() => {
         const t1 = setTimeout(() => setStage(1), 1500); // activate
@@ -616,16 +631,7 @@ export default function StudentTest2page() {
     // new 
     const [index, setIndex] = useState(0);
 
-  // Automatically cycle through the three user tiers every 3.5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % tiers.length)
-    }, 3000)
-
-    return () => clearInterval(interval)
-  }, [])
-
-  const currentTier = tiers[index]
+  
 
   return (
     <div className='min-h-screen bg-white text-zinc-900 '>
@@ -1457,13 +1463,11 @@ export default function StudentTest2page() {
       </div>
     </section>
 
-    <section
-            id="ecosystem-section"
-            className="relative h-[500vh] bg-gradient-to-br from-[#f3f055] via-[#F8FAFC] to-[#15c054] pb-28 "
-            >
-            <div className="text-center pt-20 mb-18">
-    
-                <span
+    <section className="relative py-40">
+      
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-24 text-center">
+          <span
                     className="
                     inline-block
                     px-5 py-2
@@ -1477,188 +1481,54 @@ export default function StudentTest2page() {
                 >
                     The SmartStudent Ecosystem
                 </span>
-    
-                <div className="max-w-4xl mx-auto">
-                    <h2
-                    className="
-                        mt-8
-                        text-6xl md:text-7xl
-                        font-semibold
-                        tracking-tight
-                        text-[#3e543f]
-                        text-center
-                        leading-tight
-                    "
-                    >
-                    One platform powering
-                    <br />
-                    modern education.
-                    </h2>
-                </div>
-    
-            </div>
-            <div className="sticky top-0 h-screen">
-    
-                <div className="grid grid-cols-12 h-full gap-2 ml-8">
-    
-                    {/* TIMELINE */}
-    
-                    <div className="col-span-3 flex items-center">
-                        <div className="relative">
-    
-                            {ecosystemSteps.map((step, index) => {
-    
-                                const isActive = index === activeStep
-                                const isCompleted = index < activeStep
-    
-                                return (
-                                <div
-                                    key={step.id}
-                                    className="flex items-center gap-5 mb-12"
-                                >
-                                    <div
-                                    className={`
-                                        w-5 h-5 rounded-full
-                                        transition-all duration-500
-    
-                                        ${
-                                        isCompleted
-                                            ? "bg-green-500"
-                                            : isActive
-                                            ? "bg-cyan-500 scale-150"
-                                            : "bg-zinc-300"
-                                        }
-                                    `}
-                                    />
-    
-                                    <div>
-                                    <h3
-                                        className={`
-                                        transition-all duration-500
-    
-                                        ${
-                                            isActive
-                                            ? "text-2xl text-zinc-900 font-bold"
-                                            : "text-zinc-500"
-                                        }
-                                        `}
-                                    >
-                                        {step.title}
-                                    </h3>
-                                    </div>
-                                </div>
-                                )
-                            })}
-                            </div>
-    
-                    </div>
-    
-                    {/* SHOWCASE */}
-    
-                    <div className="col-span-9 flex items-center mt-20 p-4">
-                        <motion.div
-                            key={activeStep}
-                            initial={{
-                                opacity: 0,
-                                y: 40,
-                            }}
-                            animate={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            exit={{
-                                opacity: 0,
-                            }}
-                            transition={{
-                                duration: 0.5,
-                            }}
-                            className="
-                                w-full
-                                h-[700px]
-                                mb-24
-                                bg-gradient-to-br
-                                from-white
-                                via-[#FCFFFE]
-                                to-[#F6FFFC]
-                                border border-[#DDF5EE]
-                                shadow-[0_30px_80px_rgba(0,0,0,0.06)]
-                                overflow-hidden
-                                relative
-                                
-                            "
-                            >
-                            <AnimatePresence mode="wait">
-    
-                            <motion.div
-                                key={activeStep}
-                                initial={{
-                                opacity: 0,
-                                x: 60,
-                                filter: 'blur(8px)',
-                                }}
-                                animate={{
-                                opacity: 1,
-                                x: 0,
-                                filter: 'blur(0px)',
-                                }}
-                                exit={{
-                                opacity: 0,
-                                x: -60,
-                                filter: 'blur(8px)',
-                                }}
-                                transition={{
-                                duration: 0.45,
-                                }}
-                                className="h-full"
-                            >
-                                {showcaseComponents[activeStep]}
-                            </motion.div>
-    
-                            </AnimatePresence>
-                        </motion.div>
-                    </div>
-    
-                </div>
-    
-      
-    
-            </div>
-        </section>
 
-{/* how it works */}
-    {/* <section className="py-12 sm:py-20 lg:py-24 bg-[#FAFAFA] ">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12 sm:mb-20">
-            <h2 className="text-amber-500 font-bold text-sm sm:text-lg mb-3 sm:mb-4 uppercase tracking-wider">How it Works</h2>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white">Three Steps to Excellence</h3>
-          </div>
-          <div className="grid lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 relative">
-            <div className="flex flex-col items-center text-center group relative">
-              <div className="w-24 h-24 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-8 border-4 border-white dark:border-slate-800 shadow-xl z-10">
-                <School className="w-12 h-12" />
-              </div>
-              <div className="hidden lg:block absolute top-12 left-[60%] w-full h-[2px] border-t-2 border-dashed border-emerald-200 dark:border-slate-700"></div>
-              <h4 className="text-2xl font-bold mb-4">1. Onboard</h4>
-              <p className="text-slate-600 dark:text-slate-400 max-w-sm">Setup your institute profile, import student data, and define multi-tenant roles within minutes.</p>
-            </div>
-            <div className="flex flex-col items-center text-center group relative">
-              <div className="w-24 h-24 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-500 mb-8 border-4 border-white dark:border-slate-800 shadow-xl z-10">
-                <FileText className="w-12 h-12" />
-              </div>
-              <div className="hidden lg:block absolute top-12 left-[60%] w-full h-[2px] border-t-2 border-dashed border-emerald-200 dark:border-slate-700"></div>
-              <h4 className="text-2xl font-bold mb-4">2. Create</h4>
-              <p className="text-slate-600 dark:text-slate-400 max-w-sm">Use AI to generate curriculum-aligned questions, quizzes, and personalized learning materials.</p>
-            </div>
-            <div className="flex flex-col items-center text-center group relative">
-              <div className="w-24 h-24 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-500 mb-8 border-4 border-white dark:border-slate-800 shadow-xl z-10">
-                <Brain className="w-12 h-12" />
-              </div>
-              <h4 className="text-2xl font-bold mb-4">3. Learn</h4>
-              <p className="text-slate-600 dark:text-slate-400 max-w-sm">Students engage with dynamic content while AI tracks progress and provides real-time feedback.</p>
-            </div>
-          </div>
+          <h2 className="mt-6 text-5xl md:text-7xl font-bold tracking-tight text-zinc-900">
+            Discover What We’re Building
+          </h2>
+
+          <p className="max-w-3xl mx-auto mt-8 text-xl text-zinc-600">
+            A connected suite of AI-powered products designed to transform
+            learning, teaching, assessments, and career preparation.
+          </p>
         </div>
-      </section> */}
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{
+            once: true,
+            amount: 0.15,
+          }}
+          variants={{
+            hidden: {},
+            show: {
+              transition: {
+                staggerChildren: 0.15,
+              },
+            },
+          }}
+          className="grid lg:grid-cols-3 gap-8"
+        >
+          {products.map((product) => (
+            <ProductCard
+              key={product.title}
+              title={product.title}
+              description={product.description}
+              image={product.image}
+              featured={product.featured}
+            />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+
+
+
+    {/* ----------- */}
+
+
+
+   
 
     <section className='relative py-28 overflow-hidden bg-white border-t border-zinc-100'>
 

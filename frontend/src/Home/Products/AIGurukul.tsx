@@ -28,53 +28,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
 export default function GurukulPage() {
-  const features = [
-    {
-      icon: <BookOpen size={28} />,
-      title: "Structured Courses",
-      description:
-        "Access lessons, videos, resources, and learning paths in one place.",
-    },
-    {
-      icon: <ClipboardCheck size={28} />,
-      title: "Smart Assessments",
-      description:
-        "Practice with quizzes, assignments, and exams designed to measure progress.",
-    },
-    {
-      icon: <Trophy size={28} />,
-      title: "Student Rankings",
-      description:
-        "Compete through leaderboards and track your standing among peers.",
-    },
-    {
-      icon: <BarChart3 size={28} />,
-      title: "Learning Analytics",
-      description:
-        "Understand strengths, weaknesses, and performance trends.",
-    },
-    {
-      icon: <Brain size={28} />,
-      title: "AI Recommendations",
-      description:
-        "Receive personalized suggestions on what to study next.",
-    },
-    {
-      icon: <GraduationCap size={28} />,
-      title: "Progress Tracking",
-      description:
-        "Monitor growth across subjects and stay focused on goals.",
-    },
-  ];
+ 
 
   const journey = [
     "Enroll",
     "Learn",
     "Practice",
     "Assess",
-    "Compete",
     "Improve",
   ];
+
+ 
 
   const sectionRef = useRef(null);
 
@@ -1204,13 +1168,13 @@ export default function GurukulPage() {
 
 
       {/* Problem */}
-
-      <section className="max-w-7xl mx-auto px-6 py-28">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+ 
+      <section className="mx-auto px-16 py-28 bg-gradient-to-r from-orange-400 to-yellow-300 my-0 w-full">
+        <div className="grid lg:grid-cols-2 gap-16 items-start ">
 
           {/* LEFT SIDE - Static */}
           <div>
-            <h2 className="text-6xl font-bold leading-tight">
+            <h2 className="text-6xl font-bold leading-tight text-white">
               Learning Shouldn't Be Scattered Across Multiple Tools
             </h2>
           </div>
@@ -1233,7 +1197,7 @@ export default function GurukulPage() {
               duration: 1.0,
               ease: "easeOut",
             }}
-            className="space-y-6 text-zinc-500 text-lg pt-10"
+            className="space-y-6 text-zinc-700 font-semibold text-lg pt-10"
           >
             <p>
               Students often switch between learning platforms,
@@ -1257,29 +1221,445 @@ export default function GurukulPage() {
           </h2>
         </div>
 
-        <motion.div
-          className="grid md:grid-cols-6 gap-4 mt-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.15,
-              },
-            },
-          }}
-        >
+
+        <div className="grid md:grid-cols-5 gap-6 mt-20">
           {journey.map((step, index) => (
             <motion.div
               key={step}
+              initial={{
+                opacity: 0,
+                y: 150,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.4,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.18,
+                ease: "easeOut",
+              }}
+              className="
+                relative
+                h-[240px]
+                overflow-hidden
+                rounded-3xl
+                border
+                border-[#0c376ed9]/10
+                bg-white
+                shadow-sm
+                flex
+                items-center
+                justify-center
+              "
+            >
+              {/* Giant Number */}
+
+              <motion.div
+                initial={{
+                  opacity: 1,
+                  scale: 1.8,
+                }}
+                whileInView={{
+                  opacity: 0.2,
+                  scale: 1,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.9,
+                  delay: index * 0.18 + 0.15,
+                }}
+                className="
+                  absolute
+                  inset-0
+                  flex
+                  items-center
+                  justify-center
+                  text-[140px]
+                  font-black
+                  text-[#f0c33e]
+                  select-none
+                  pointer-events-none
+                "
+              >
+                {`0${index + 1}`}
+              </motion.div>
+
+              {/* Content */}
+
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.18 + 0.45,
+                }}
+                className="
+                  relative
+                  z-10
+                  text-center
+                  px-5
+                "
+              >
+                <h3 className="font-semibold text-lg leading-snug">
+                  {step}
+                </h3>
+
+                <p className="mt-3 text-sm text-zinc-500">
+                  {index === 0 &&
+                    "Begin your learning journey with structured courses designed to match your goals and aspirations."}
+
+                  {index === 1 &&
+                    "Explore concepts through engaging lessons, interactive content, and personalized learning experiences."}
+
+                  {index === 2 &&
+                    "Strengthen your understanding with exercises, assignments, and hands-on activities."}
+
+                  {index === 3 &&
+                    "Measure progress through intelligent assessments and gain insights into your performance."}
+
+                  {index === 4 &&
+                    "Receive actionable feedback and continuously refine your skills to achieve better outcomes."}
+                </p>
+              </motion.div>
+
+              {/* Bottom Progress Line */}
+
+              <motion.div
+                initial={{
+                  width: 0,
+                }}
+                whileInView={{
+                  width: "100%",
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.18 + 0.3,
+                }}
+                className="
+                  absolute
+                  bottom-0
+                  left-0
+                  h-1
+                  bg-[#06460fd9]
+                "
+              />
+            </motion.div>
+          ))}
+        </div>
+
+      </section>
+
+      {/* general Features cards */}
+      <section className="max-w-7xl mx-auto px-6 py-32">
+
+  <div className="text-center mb-20">
+    <h2 className="text-5xl md:text-6xl font-bold">
+      Everything Students Need
+      <span className="text-[#EECD42]">
+        {" "}In One Place
+      </span>
+    </h2>
+
+    <p className="mt-6 text-xl text-zinc-500 max-w-3xl mx-auto">
+      From learning and assessments to rankings and analytics,
+      AI Gurukul brings the entire learning journey together.
+    </p>
+  </div>
+
+  <div className="grid lg:grid-cols-3 gap-6">
+
+    {/* LEFT COLUMN */}
+
+    <motion.div
+      initial={{ opacity: 0, x: -80 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.3,
+      }}
+      className="flex flex-col gap-6"
+    >
+      {/* Structured Courses */}
+
+      <div className="bg-white border rounded-3xl p-6 h-[500px]">
+
+        {/* MOCKUP */}
+
+        <div className="bg-zinc-50 border rounded-2xl p-5 h-64">
+          <div className="font-semibold">
+            Course Library
+          </div>
+
+          <div className="mt-5 space-y-4">
+
+            {[
+              "Mathematics",
+              "Physics",
+              "Chemistry",
+            ].map((course) => (
+              <div key={course}>
+                <div className="flex justify-between text-sm mb-2">
+                  <span>{course}</span>
+                  <span>75%</span>
+                </div>
+
+                <div className="h-2 bg-zinc-200 rounded-full">
+                  <div className="h-full w-3/4 rounded-full bg-[#EECD42]" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <h3 className="mt-8 text-2xl font-bold">
+          Structured Courses
+        </h3>
+
+        <p className="mt-4 text-zinc-500">
+          Follow organized learning paths designed to help students
+          build strong foundations and progress confidently.
+        </p>
+      </div>
+
+      {/* Assessments */}
+
+      <div className="bg-white border rounded-3xl p-8 h-[220px]">
+
+        <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center">
+          📝
+        </div>
+
+        <h3 className="mt-6 text-2xl font-bold">
+          Smart Assessments
+        </h3>
+
+        <p className="mt-4 text-zinc-500">
+          Practice through adaptive quizzes
+          designed to strengthen understanding.
+        </p>
+
+      </div>
+    </motion.div>
+
+    {/* CENTER COLUMN */}
+
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 80,
+        scale: 0.95,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        duration: 0.8,
+      }}
+      className="flex flex-col gap-6"
+    >
+      {/* Rankings */}
+
+      <div className="bg-white border rounded-3xl p-8 h-[220px]">
+
+        <div className="text-5xl">
+          🏆
+        </div>
+
+        <h3 className="mt-6 text-2xl font-bold">
+          Student Rankings
+        </h3>
+
+        <p className="mt-4 text-zinc-500">
+          View your course and institute rankings while
+          earning badges for achievements.
+        </p>
+
+      </div>
+
+      {/* Analytics */}
+
+      <div className="bg-white border rounded-3xl p-6 h-[500px]">
+
+        <div className="bg-zinc-50 border rounded-2xl p-5 h-64">
+
+          <div className="font-semibold">
+            Learning Analytics
+          </div>
+
+          <div className="flex items-end gap-3 mt-8 h-32">
+
+            {[40, 65, 50, 85, 70].map((h, i) => (
+              <div
+                key={i}
+                className="flex-1 rounded-t-xl bg-emerald-400"
+                style={{
+                  height: `${h}%`,
+                }}
+              />
+            ))}
+
+          </div>
+
+          <div className="flex justify-between text-xs text-zinc-500 mt-4">
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+          </div>
+
+        </div>
+
+        <h3 className="mt-8 text-2xl font-bold">
+          Learning Analytics
+        </h3>
+
+        <p className="mt-4 text-zinc-500">
+          Understand strengths, weaknesses and learning
+          patterns through detailed insights.
+        </p>
+
+      </div>
+    </motion.div>
+
+    {/* RIGHT COLUMN */}
+
+    <motion.div
+      initial={{
+        opacity: 0,
+        x: 80,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        duration: 0.8,
+        delay: 0.6,
+      }}
+      className="flex flex-col gap-6"
+    >
+      {/* Progress Tracking */}
+
+      <div className="bg-white border rounded-3xl p-6 h-[500px]">
+
+        <div className="bg-zinc-50 border rounded-2xl p-5 h-64">
+
+          <div className="font-semibold">
+            Progress Overview
+          </div>
+
+          <div className="mt-8 flex justify-center">
+
+            <div className="relative w-36 h-36 rounded-full border-[12px] border-zinc-200">
+
+              <div
+                className="
+                  absolute
+                  inset-0
+                  rounded-full
+                  border-[12px]
+                  border-transparent
+                  border-t-[#EECD42]
+                  rotate-45
+                "
+              />
+
+              <div className="absolute inset-0 flex items-center justify-center font-bold text-2xl">
+                78%
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <h3 className="mt-8 text-2xl font-bold">
+          Progress Tracking
+        </h3>
+
+        <p className="mt-4 text-zinc-500">
+          Monitor completion rates, learning consistency
+          and academic growth over time.
+        </p>
+
+      </div>
+
+      {/* AI Recommendations */}
+
+      <div className="bg-white border rounded-3xl p-8 h-[220px]">
+
+        <div className="w-12 h-12 rounded-2xl bg-cyan-100 flex items-center justify-center">
+          ✨
+        </div>
+
+        <h3 className="mt-6 text-2xl font-bold">
+          AI Recommendations
+        </h3>
+
+        <p className="mt-4 text-zinc-500">
+          Get personalized suggestions on what to learn,
+          revise and practice next.
+        </p>
+
+      </div>
+    </motion.div>
+
+  </div>
+
+</section>
+
+     
+
+      
+      {/* Stats */}
+
+      <section className="max-w-7xl mx-auto px-6 py-28">
+        <div className="grid md:grid-cols-3 gap-10">
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-center"
+          >
+            {/* Number */}
+            <motion.h3
               variants={{
                 hidden: {
                   opacity: 0,
-                  y: 80,
+                  y: 60,
                 },
                 visible: {
                   opacity: 1,
@@ -1287,182 +1667,222 @@ export default function GurukulPage() {
                 },
               }}
               transition={{
-                duration: 0.6,
+                duration: 0.8,
                 ease: "easeOut",
               }}
-              className="
-                bg-emerald-500/10
-                border
-                border-emerald-500/20
-                rounded-3xl
-                p-6
-                text-center
-              "
+              className="text-6xl md:text-7xl font-bold text-[#0c376ed9]"
             >
-              <div className="text-emerald-400 text-sm mb-3">
-                0{index + 1}
-              </div>
+              95%
+            </motion.h3>
 
-              <h3 className="font-medium">
-                {step}
-              </h3>
+            {/* Line */}
+            <div className="flex justify-center my-6">
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="
+                  w-64
+                  h-px
+                  origin-center
+                  bg-gradient-to-r
+                  from-transparent
+                  via-[#0c376ed9]
+                  to-transparent
+                "
+              />
+            </div>
+
+            {/* Content */}
+            <motion.div
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: -60,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.15,
+                ease: "easeOut",
+              }}
+            >
+              <h4 className="text-xl font-semibold">
+                Student Engagement
+              </h4>
+
+              <p className="mt-4 text-zinc-500 leading-relaxed max-w-xs mx-auto">
+                Active participation across courses, assessments and learning activities.
+              </p>
             </motion.div>
-          ))}
-        </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-center"
+          >
+            {/* Number */}
+            <motion.h3
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 60,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+              }}
+              className="text-6xl md:text-7xl font-bold text-[#0c376ed9]"
+            >
+              50k+
+            </motion.h3>
+
+            {/* Line */}
+            <div className="flex justify-center my-6">
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="
+                  w-64
+                  h-px
+                  origin-center
+                  bg-gradient-to-r
+                  from-transparent
+                  via-[#0c376ed9]
+                  to-transparent
+                "
+              />
+            </div>
+
+            {/* Content */}
+            <motion.div
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: -60,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.15,
+                ease: "easeOut",
+              }}
+            >
+              <h4 className="text-xl font-semibold">
+                Learning Sessions
+              </h4>
+
+              <p className="mt-4 text-zinc-500 leading-relaxed max-w-xs mx-auto">
+                Thousands of learning interactions completed by students.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-center"
+          >
+            {/* Number */}
+            <motion.h3
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 60,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+              }}
+              className="text-6xl md:text-7xl font-bold text-[#0c376ed9]"
+            >
+              24/7
+            </motion.h3>
+
+            {/* Line */}
+            <div className="flex justify-center my-6">
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="
+                  w-64
+                  h-px
+                  origin-center
+                  bg-gradient-to-r
+                  from-transparent
+                  via-[#0c376ed9]
+                  to-transparent
+                "
+              />
+            </div>
+
+            {/* Content */}
+            <motion.div
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: -60,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.15,
+                ease: "easeOut",
+              }}
+            >
+              <h4 className="text-xl font-semibold">
+                Access to learning
+              </h4>
+
+              <p className="mt-4 text-zinc-500 leading-relaxed max-w-xs mx-auto">
+                Students can learn, practice and revise anytime they choose.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          
+
+        
+
+        </div>
       </section>
 
-      {/* general Features cards */}
-      <section className="max-w-7xl mx-auto px-6 py-28">
-  <div className="text-center">
-    <h2 className="text-4xl font-bold">
-      Everything Needed for Modern Learning
-    </h2>
-  </div>
-
-  <motion.div
-    className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16"
-    initial="hidden"
-    whileInView="visible"
-    viewport={{
-      once: true,
-      amount: 0.15,
-    }}
-    variants={{
-      hidden: {},
-      visible: {
-        transition: {
-          staggerChildren: 0.15,
-        },
-      },
-    }}
-  >
-    {features.map((feature) => (
-      <motion.div
-        key={feature.title}
-        variants={{
-          hidden: {
-            opacity: 0,
-            y: 80,
-            scale: 0.95,
-          },
-          visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-          },
-        }}
-        transition={{
-          duration: 0.6,
-          ease: "easeOut",
-        }}
-        whileHover={{
-          y: -10,
-          scale: 1.03,
-        }}
-        className="
-          group
-          relative
-          overflow-hidden
-          bg-emerald-500/5
-          border
-          border-emerald-500/20
-          rounded-3xl
-          p-8
-          transition-all
-          duration-300
-        "
-      >
-        {/* Hover Glow */}
-        <div
-          className="
-            absolute
-            inset-0
-            opacity-0
-            group-hover:opacity-100
-            transition-opacity
-            duration-500
-            bg-gradient-to-br
-            from-emerald-400/10
-            via-transparent
-            to-cyan-400/10
-          "
-        />
-
-        {/* Icon */}
-        <motion.div
-          initial={{
-            scale: 0,
-          }}
-          whileInView={{
-            scale: 1,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            delay: 0.3,
-            type: "spring",
-            stiffness: 200,
-          }}
-          className="relative z-10 text-emerald-600"
-        >
-          {feature.icon}
-        </motion.div>
-
-        {/* Content */}
-        <div className="relative z-10">
-          <h3 className="text-xl font-semibold mt-6">
-            {feature.title}
-          </h3>
-
-          <p className="mt-4 text-zinc-500 leading-relaxed">
-            {feature.description}
-          </p>
-        </div>
-      </motion.div>
-    ))}
-  </motion.div>
-</section>
-
-     
 
       
-      {/* Stats */}
-      <section className="max-w-7xl mx-auto px-6 py-28">
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              value: "95%",
-              label: "Student Engagement",
-            },
-            {
-              value: "50K+",
-              label: "Learning Sessions",
-            },
-            {
-              value: "24/7",
-              label: "Access to Learning",
-            },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="text-center"
-            >
-              <h3 className="text-6xl font-bold text-emerald-800">
-                {stat.value}
-              </h3>
-
-              <p className="mt-3 text-zinc-400">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* CTA */}
-      <section className="max-w-7xl mx-auto px-6 py-28">
-        <div className="rounded-[40px] bg-gradient-to-r from-[#dbcc2a] via-[#358f25] to-[#08842b] text-white p-12 md:p-20 text-center">
+      <section className="">
+        <div className=" bg-gradient-to-r from-[#dbcc2a] via-[#358f25] to-[#08842b] text-white p-12 md:p-20 text-center">
           <h2 className="text-4xl md:text-6xl font-bold">
             Deliver a Smarter Learning Experience
           </h2>

@@ -123,6 +123,12 @@ export default function LandingNavbar() {
               >
                 Blogs
               </a>
+              <a
+                href="#vision"
+                className="hover:text-emerald-600 transition"
+              >
+                Partners
+              </a>
 
               <a
                 href="#vision"

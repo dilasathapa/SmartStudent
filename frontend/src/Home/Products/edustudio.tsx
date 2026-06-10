@@ -264,17 +264,35 @@ export default function EduStudioPage() {
       <section className="max-w-7xl mx-auto px-6 py-28">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-5xl font-bold leading-tight text-emerald-700">
+            <h2 className="text-6xl font-bold leading-tight text-emerald-700 pt-10">
               Creating Educational Content Shouldn't Take Days
             </h2>
           </div>
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: 100,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.4,
+            }}
+            transition={{
+              duration: 1.0,
+              ease: "easeOut",
+            }}
+            className="space-y-6 text-zinc-700 font-semibold text-lg pt-10"
+          >
+            <p> Recording educational videos is expensive</p>
+            <p> Editing requires specialized skills</p>
+            <p> Scaling content creation is difficult</p>
+            <p> Maintaining quality across subjects is challenging</p>
+          </motion.div>
 
-          <div className="space-y-5 text-zinc-400 text-lg">
-            <p>• Recording educational videos is expensive</p>
-            <p>• Editing requires specialized skills</p>
-            <p>• Scaling content creation is difficult</p>
-            <p>• Maintaining quality across subjects is challenging</p>
-          </div>
         </div>
       </section>
 
@@ -299,82 +317,426 @@ export default function EduStudioPage() {
       
 
       {/* Features */}
-      <section className="max-w-7xl mx-auto px-6 my-4 mb-10">
-        <div className="text-center">
-          <h2 className="text-7xl font-bold text-zinc-400">Built for <span className="bg-gradient-to-r from-[#dbcc2a] via-[#25ce07] to-[#08842b] bg-clip-text text-transparent ">Modern Learning</span></h2>
+
+      <section className="max-w-7xl mx-auto px-6 py-32">
+
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-bold">
+            Everything Needed To Create
+            <span className="text-[#EECD42]">
+              {" "}Engaging Learning Content
+            </span>
+          </h2>
+
+          <p className="mt-6 text-xl text-zinc-500 max-w-3xl mx-auto">
+            From script generation to narration and curriculum alignment,
+            EduStudio automates every step of educational content creation.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 ">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{
-                opacity: 0,
-                y: 60,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.2,
-              }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.15,
-                ease: "easeOut",
-              }}
-              className="
-              bg-[#BDC129]
-              border-2
-              border-white
-              rounded-3xl
-              p-8
-              shadow-sm
-              hover:shadow-xl
-              hover:-translate-y-2
-              transition-all
-              duration-500
-              "
-            >
-              <h3 className="text-xl font-semibold text-white">
-                {feature.title}
+        <div className="grid lg:grid-cols-3 gap-6">
+
+          {/* COLUMN 1 */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 100,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+            className="flex flex-col gap-6"
+          >
+            {/* AI Script */}
+
+            <div className="bg-white border rounded-3xl p-8 h-[220px]">
+              <h3 className="text-2xl font-bold">
+                AI Script Generation
               </h3>
 
-              <p className="text-zinc-200 mt-4">
-                {feature.description}
+              <p className="mt-4 text-zinc-500">
+                Instantly transform any topic into structured educational
+                scripts designed for effective learning.
               </p>
-            </motion.div>
-          ))}
+            </div>
+
+            {/* Visual Creation */}
+
+            <div className="bg-white border rounded-3xl p-6 h-[470px]">
+              <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+                alt=""
+                className="w-full h-64 object-cover rounded-2xl"
+              />
+
+              <h3 className="mt-6 text-2xl font-bold">
+                Visual Scene Creation
+              </h3>
+
+              <p className="mt-4 text-zinc-500">
+                Generate educational illustrations, animations and visual
+                explanations automatically for every lesson.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* COLUMN 2 */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 100,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.25,
+            }}
+            className="flex flex-col gap-6"
+          >
+            {/* Narration */}
+
+            <div className="bg-white border rounded-3xl p-6 h-[470px]">
+              <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+                alt=""
+                className="w-full h-64 object-cover rounded-2xl"
+              />
+
+              <h3 className="mt-6 text-2xl font-bold">
+                AI Narration
+              </h3>
+
+              <p className="mt-4 text-zinc-500">
+                Bring lessons to life using natural AI voices that make
+                educational content more engaging and accessible.
+              </p>
+            </div>
+
+            {/* Storytelling */}
+
+            <div className="bg-white border rounded-3xl p-8 h-[220px]">
+              <h3 className="text-2xl font-bold">
+                Educational Storytelling
+              </h3>
+
+              <p className="mt-4 text-zinc-500">
+                Convert complex concepts into memorable learning journeys
+                through narrative-driven explanations.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* COLUMN 3 */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 100,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.5,
+            }}
+            className="flex flex-col gap-6"
+          >
+
+            
+
+            <div className="bg-white border rounded-3xl p-8 h-[220px]">
+              <h3 className="text-2xl font-bold">
+                Multi-Language Support
+              </h3>
+
+              <p className="mt-4 text-zinc-500">
+                Create educational videos in multiple languages to reach
+                diverse learners across regions.
+              </p>
+            </div>
+            {/* Curriculum */}
+
+            <div className="bg-white border rounded-3xl p-6 h-[470px]">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
+                alt=""
+                className="w-full h-64 object-cover rounded-2xl"
+              />
+
+              <h3 className="mt-6 text-2xl font-bold">
+                Curriculum Alignment
+              </h3>
+
+              <p className="mt-4 text-zinc-500">
+                Ensure every lesson aligns with learning objectives,
+                standards and curriculum requirements.
+              </p>
+            </div>
+
+
+            
+          </motion.div>
+
         </div>
+
       </section>
+      
 
       
 
       {/* Stats */}
       <section className="max-w-7xl mx-auto px-6 py-28">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <h3 className="text-6xl font-bold text-emerald-700">90%</h3>
-            <p className="text-zinc-400 mt-3">
-              Faster Content Creation
-            </p>
-          </div>
+        <div className="grid md:grid-cols-3 gap-10">
 
-          <div className="text-center">
-            <h3 className="text-6xl font-bold text-emerald-700">10x</h3>
-            <p className="text-zinc-400 mt-3">
-              More Learning Content
-            </p>
-          </div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-center"
+          >
+            {/* Number */}
+            <motion.h3
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 60,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+              }}
+              className="text-6xl md:text-7xl font-bold text-[#0c376ed9]"
+            >
+              90%
+            </motion.h3>
 
-          <div className="text-center">
-            <h3 className="text-6xl font-bold text-emerald-700">24/7</h3>
-            <p className="text-zinc-400 mt-3">
-              Instant Video Generation
-            </p>
-          </div>
+            {/* Line */}
+            <div className="flex justify-center my-6">
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="
+                  w-64
+                  h-px
+                  origin-center
+                  bg-gradient-to-r
+                  from-transparent
+                  via-[#0c376ed9]
+                  to-transparent
+                "
+              />
+            </div>
+
+            {/* Content */}
+            <motion.div
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: -60,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.15,
+                ease: "easeOut",
+              }}
+            >
+              <h4 className="text-xl font-semibold">
+                Better Content Creation
+              </h4>
+
+              <p className="mt-4 text-zinc-500 leading-relaxed max-w-xs mx-auto">
+                Reduce hours of manual work by generating lessons, assessments, presentations, and learning resources in minutes.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-center"
+          >
+            {/* Number */}
+            <motion.h3
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 60,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+              }}
+              className="text-6xl md:text-7xl font-bold text-[#0c376ed9]"
+            >
+              10x
+            </motion.h3>
+
+            {/* Line */}
+            <div className="flex justify-center my-6">
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="
+                  w-64
+                  h-px
+                  origin-center
+                  bg-gradient-to-r
+                  from-transparent
+                  via-[#0c376ed9]
+                  to-transparent
+                "
+              />
+            </div>
+
+            {/* Content */}
+            <motion.div
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: -60,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.15,
+                ease: "easeOut",
+              }}
+            >
+              <h4 className="text-xl font-semibold">
+                More Learning Content
+              </h4>
+
+              <p className="mt-4 text-zinc-500 leading-relaxed max-w-xs mx-auto">
+                Create and deliver a greater variety of engaging educational materials without increasing workload.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-center"
+          >
+            {/* Number */}
+            <motion.h3
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 60,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+              }}
+              className="text-6xl md:text-7xl font-bold text-[#0c376ed9]"
+            >
+              24/7
+            </motion.h3>
+
+            {/* Line */}
+            <div className="flex justify-center my-6">
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="
+                  w-64
+                  h-px
+                  origin-center
+                  bg-gradient-to-r
+                  from-transparent
+                  via-[#0c376ed9]
+                  to-transparent
+                "
+              />
+            </div>
+
+            {/* Content */}
+            <motion.div
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: -60,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.15,
+                ease: "easeOut",
+              }}
+            >
+              <h4 className="text-xl font-semibold">
+                Always Available 
+              </h4>
+
+              <p className="mt-4 text-zinc-500 leading-relaxed max-w-xs mx-auto">
+                Generate content, assessments, presentations, and learning experiences anytime, without waiting on teams or production cycles.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          
+
+        
+
         </div>
       </section>
 
@@ -402,8 +764,8 @@ export default function EduStudioPage() {
       </section>
 
       {/* CTA */}
-      <section className="max-w-7xl mx-auto px-6 py-28">
-        <div className="rounded-[40px] bg-gradient-to-r from-[#dbcc2a] via-[#358f25] to-[#08842b] text-white p-12 md:p-20 text-center">
+      <section className=" mx-auto ">
+        <div className=" bg-gradient-to-r from-[#dbcc2a] via-[#358f25] to-[#08842b] text-white p-12 md:p-20 text-center">
           <h2 className="text-4xl md:text-6xl font-bold">
             Create Educational Videos Without Production Teams
           </h2>
