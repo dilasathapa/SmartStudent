@@ -7,13 +7,15 @@ type ProductKey =
   | "edustudio"
   | "gurukul"
   | "smartpapers"
-  | "ezprep";
+  | "ezprep"
+  | "smartdeck";
 
 const productRoutes = {
   edustudio: "/product/edustudio",
   gurukul: "/product/gurukul",
   smartpapers: "/product/smartpapers",
   ezprep: "/product/ezprep",
+  smartdeck: "/product/smartdeck",
 };
 
 export default function LandingNavbar() {
@@ -54,6 +56,13 @@ export default function LandingNavbar() {
       subtitle: "AI Interview Preparation",
       description:
         "Turn interview preparation into measurable progress. EzPrep evaluates every response and provides detailed feedback to help students perform at their best.",
+      accent: "from-cyan-50 via-white to-green-50",
+    },
+    smartdeck: {
+      title: "SmartDeck",
+      subtitle: "AI Presentation Builder",
+      description:
+        "Turn documents and ideas into presentation-ready decks in minutes. From content to presentation—automatically structured, designed, and ready to present.",
       accent: "from-cyan-50 via-white to-green-50",
     },
   };
@@ -189,11 +198,7 @@ export default function LandingNavbar() {
                   z-50
                 "
               >
-                <div className="max-w-7xl mx-auto h-full">
-
-                  <div className="grid grid-cols-12 h-full">
-
-                    {/* LEFT */}
+                <div className=" mx-auto h-full">
 
                     <div className="col-span-10 p-12 ">
 
@@ -201,7 +206,7 @@ export default function LandingNavbar() {
                         Products {" "}
                         <span>overview</span>
                       </div>
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-3 gap-2">
 
                 
 
@@ -235,12 +240,6 @@ export default function LandingNavbar() {
                       ))}
                       </div>
                     </div>
-
-                    {/* RIGHT */}
-
-                   
-
-                  </div>
 
                 </div>
               </motion.div>

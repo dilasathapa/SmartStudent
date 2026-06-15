@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef} from 'react'
+import { useEffect, useState, useRef, useMemo} from 'react'
 import { Link } from 'react-router-dom'
 
 import { motion, AnimatePresence, useMotionValue, useTransform, animate, useInView } from "framer-motion";
@@ -8,10 +8,7 @@ import { School, Video, HeartHandshake, GraduationCap, ArrowUpRight,
     Sparkles, Building2, Users, ChevronLeft, ChevronRight, Star, FileText, Brain } from 'lucide-react';
 import { Footer } from './Footer';
 import LandingNavbar from './LandingNavbar';
-import EdustudioSection from './components/EdustudioSection';
-import AIGurukulShowcase from './components/AIGurukulShowcase';
-import SmartPapersShowcase from './components/SmartpapersShowcase';
-import EzPrepShowcase from './components/EZPrepshowcase';
+import landingvideo from "./../assets/video_landing.mp4"
 
 
 interface AnimatedCounterProps {
@@ -631,16 +628,25 @@ export default function StudentTest2page() {
     // new 
     const [index, setIndex] = useState(0);
 
+    const particles = useMemo(
+      () =>
+        Array.from({ length: 40 }).map(() => ({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+        })),
+      []
+    );
+
   
 
   return (
     <div className='min-h-screen bg-white text-zinc-900 '>
       {/* BACKGROUND */}
-      <div className='fixed inset-0 -z-10'>
+      {/* <div className='fixed inset-0 -z-10'>
         <div className='absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.08),transparent_30%)]' />
 
         <div className='absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:80px_80px]' />
-      </div>
+      </div> */}
 
       {/* NAVBAR */}
       <LandingNavbar />
@@ -705,7 +711,7 @@ export default function StudentTest2page() {
         </div>
 
         {/* ANIMATION AREA */}
-        <div className="flex-1 relative mt-24">
+        <div className="flex-1 relative mt-24 min-h-[90vh]">
             
             {/* WORD LAYER */}
             <AnimatePresence>
@@ -767,6 +773,7 @@ export default function StudentTest2page() {
             {/* PARTICLE STAGE (fake particles) */}
             {stage === 2 &&
             Array.from({ length: 40 }).map((_, i) => (
+              
                 <motion.div
                 key={i}
                 className="absolute w-1.5 h-1.5 bg-black rounded-full"
@@ -796,38 +803,26 @@ export default function StudentTest2page() {
                 initial={{ scale: 0.98, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={transitionConfig}
-                className="absolute inset-0 flex items-center justify-center p-4"
+                className="relative mx-auto flex items-center justify-center w-full mt-20"
               >
-                {/* GREEN SLANTED BACKGROUND */}
-                <div
-                  className="
-                    absolute
-                    right-[-6%]
-                    top-[5%]
-                    w-[120%]
-                    h-[120%]
-                    bg-gradient-to-br from-[#f3faf8] via-[#06623b] to-[#fcf578] 
-
-                    overflow-hidden
-                  "
-                  style={{
-                    clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%)',
-                }}
-                />
+                
                 {/* Premium, clean charcoal canvas background */}
-                <motion.div className="w-[85%] max-w-5xl aspect-video rounded-2xl shadow-[0_0_60px_rgba(0,0,0,0.5)] overflow-hidden relative border border-neutral-800 bg-[#151819]">
-                  {/* <video src="/assets/video_landing.mp4" autoPlay
-  muted
-  loop
-  playsInline
-  className="w-full h-full object-cover"></video> */}
+                <motion.div className=" w-full h-[90vh] aspect-video shadow-[0_0_60px_rgba(0,0,0,0.5)] overflow-hidden relative border border-neutral-800 bg-[#151819]">
+                  {/* <video src={landingvideo} autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover pt-10"></video> */}
                   
 
                 </motion.div>
+                
               </motion.div>
                       )}
                   </div>
               </div>
+
+              
 
 
 

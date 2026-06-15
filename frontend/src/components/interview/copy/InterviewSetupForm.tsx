@@ -1,8 +1,4 @@
 import { useState } from 'react'
-import michael_face from "../../assets/interview_faces/michael2.png"
-import sarah_face from "../../assets/interview_faces/icons8-user-female.svg"
-import emma_face from "../../assets/interview_faces/icons9-user-female.svg"
-import david_face from "../../assets/interview_faces/david.png"
 
 interface CustomRubric {
   title: string
@@ -12,15 +8,8 @@ interface CustomRubric {
 interface Props {
   onStart: (data: any) => void
   loading: boolean
-}
-
-interface Interviewer {
-  id: string
-  name: string
-  gender: 'Male' | 'Female'
-  personality: string
-  avatar: string
-  previewText: string
+  startDisabled?: boolean
+  startDisabledMessage?: string
 }
 
 const DEFAULT_RUBRICS = [
@@ -51,48 +40,11 @@ const DEFAULT_RUBRICS = [
   }
 ]
 
-const INTERVIEWERS: Interviewer[] = [
-  {
-    id: 'en-US-JennyNeural',
-    name: 'Sarah',
-    gender: 'Female',
-    personality: 'Friendly & Encouraging',
-    avatar: sarah_face,
-    previewText:
-      "Hi, I'm Sarah. I'll be guiding today's interview. Feel free to take your time and explain your thinking."
-  },
-  {
-    id: 'en-US-AriaNeural',
-    name: 'Emma',
-    gender: 'Female',
-    personality: 'Energetic & Curious',
-    avatar: emma_face,
-    previewText:
-      "Hello, I'm Emma. I'm excited to learn more about your experience and how you approach problems."
-  },
-  {
-    id: 'en-US-GuyNeural',
-    name: 'David',
-    gender: 'Male',
-    personality: 'Professional & Structured',
-    avatar: david_face,
-    previewText:
-      "Hello, I'm David. I'll be conducting your interview today. Let's explore your skills and experience together."
-  },
-  {
-    id: 'en-US-ChristopherNeural',
-    name: 'Michael',
-    gender: 'Male',
-    personality: 'Calm & Analytical',
-    avatar: michael_face,
-    previewText:
-      "Hi, I'm Michael. During this interview, I'll be interested in understanding your reasoning and problem-solving approach."
-  }
-]
-
 export default function InterviewSetupForm({
   onStart,
-  loading
+  loading,
+  startDisabled = false,
+  startDisabledMessage,
 }: Props) {
 
   const [role, setRole] =
@@ -126,92 +78,37 @@ export default function InterviewSetupForm({
     'verbal_communication'
   ])
 
-  const [voice, setVoice] = useState('en-US-JennyNeural')
 
-  const [testingVoice, setTestingVoice] =  useState(false)
-
-  const [selectedVoice, setSelectedVoice] =
-  useState('en-US-JennyNeural')
-
-  const [playingVoice, setPlayingVoice] =
-  useState<string | null>(null)
-
-  const [selectedInterviewer, setSelectedInterviewer] = useState(INTERVIEWERS[0])
+  console.log("custom rubrics", customRubrics)
+  console.log("selected rubrics", selectedRubrics)
 
 
 
+// remove custom rubric
 
-// test voices
-
-const testVoice = async (
-  interviewer: Interviewer
+const removeRubric = (
+  index: number
 ) => {
-  try {
 
-    setPlayingVoice(interviewer.id)
+  const totalRubrics =
+    selectedRubrics.length
+    + customRubrics.length
 
-    const response = await fetch(
-      'http://localhost:8000/test-voice',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          voice: interviewer.id,
-          text: interviewer.previewText
-        })
-      }
-    )
-
-    if (!response.ok) {
-      throw new Error(
-        'Failed to generate voice preview'
-      )
-    }
-
-    const audioBlob =
-      await response.blob()
-
-    const audioUrl =
-      URL.createObjectURL(audioBlob)
-
-    const audio =
-      new Audio(audioUrl)
-
-    audio.onended = () => {
-
-      URL.revokeObjectURL(audioUrl)
-
-      setPlayingVoice(null)
-    }
-
-    audio.onerror = () => {
-
-      URL.revokeObjectURL(audioUrl)
-
-      setPlayingVoice(null)
-    }
-
-    await audio.play()
-
-  } catch (error) {
-
-    console.error(
-      'Voice preview failed:',
-      error
-    )
-
-    setPlayingVoice(null)
+  if (totalRubrics <= 5) {
 
     alert(
-      'Unable to play voice preview.'
+      'Minimum 3 rubrics required'
     )
+
+    return
   }
+
+  setCustomRubrics((prev) =>
+    prev.filter(
+      (_, i) => i !== index
+    )
+  )
 }
-
-
-
 
 //   handle start
 
@@ -227,9 +124,6 @@ const testVoice = async (
                 .filter(Boolean),
             selected_rubrics: selectedRubrics, // ONLY keys
             custom_rubrics: customRubrics, // full objects with title and description
-            voice: selectedInterviewer.id,
-            interviewer_name:
-              selectedInterviewer.name
         }
 
         console.log("FINAL PAYLOAD:", payload)
@@ -481,7 +375,7 @@ const testVoice = async (
 
             <div className='bg-gray-50 border rounded-3xl p-6 mb-8'>
 
-                <h3 className='text-2xl font-bold mb-6'>
+                <h3 className='text-2xl font-bold mb-8'>
 
                 Add Custom Rubric
 
@@ -569,13 +463,11 @@ const testVoice = async (
 
             </div>
 
-            
-
             {/* CUSTOM RUBRIC LIST */}
 
             {!!customRubrics.length && (
 
-                <div className='space-y-4'>
+                <div className='space-y-4 mt-4'>
 
                 {customRubrics.map(
                     (rubric, index) => (
@@ -642,90 +534,6 @@ const testVoice = async (
             </div>
 
         </div>
-
-        <div className="mt-10">
-
-          <h2 className="text-3xl font-bold mb-3">
-            Choose Your Interviewer
-          </h2>
-
-          <p className="text-gray-500 mb-8">
-            Select the interviewer you'd like to interact with.
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-6">
-
-            {INTERVIEWERS.map((interviewer) => {
-
-              const selected = selectedInterviewer.id === interviewer.id
-
-              return (
-
-                <div
-                  key={interviewer.id}
-                  onClick={() =>
-                    setSelectedInterviewer(
-                      interviewer
-                    )
-                  }
-                  className={`
-                    cursor-pointer
-                    rounded-3xl
-                    border
-                    p-6
-                    transition
-                    hover:shadow-lg
-
-                    ${
-                      selected
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 bg-white'
-                    }
-                  `}
-                >
-
-                  <div className="flex items-center gap-4">
-
-                    <div className="text-6xl">
-                      <img src={interviewer.avatar} alt="avatar" className='h-16' />
-                      
-                    </div>
-
-                    <div>
-
-                      <h3 className="font-bold text-xl">
-                        {interviewer.name}
-                      </h3>
-
-                      <p className="text-gray-500">
-                        {interviewer.gender}
-                      </p>
-
-                      <p className="text-sm text-gray-600 mt-2">
-                        {interviewer.personality}
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      testVoice(interviewer)
-                    }}
-                  >
-                    {playingVoice === interviewer.id
-                      ? 'Playing...'
-                      : '▶ Listen'}
-                  </button>
-
-                </div>
-              )
-            })}
-          </div>
-        </div>
         
 
 
@@ -733,21 +541,25 @@ const testVoice = async (
 
         <div className='mt-10'>
 
-          <button
-            onClick={handleStart}
-            disabled={
-              loading ||
-              !role ||
-              !focusAreas
-            }
-            className='bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-10 py-5 rounded-2xl font-bold transition'
-          >
-
-            {loading
-              ? 'Preparing Interview...'
-              : 'Start Interview'}
-
-          </button>
+          {startDisabled && startDisabledMessage ? (
+            <p className="text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 max-w-xl">
+              {startDisabledMessage}
+            </p>
+          ) : (
+            <button
+              onClick={handleStart}
+              disabled={
+                loading ||
+                !role ||
+                !focusAreas
+              }
+              className='bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-10 py-5 rounded-2xl font-bold transition'
+            >
+              {loading
+                ? 'Preparing Interview...'
+                : 'Start Interview'}
+            </button>
+          )}
 
         </div>
 

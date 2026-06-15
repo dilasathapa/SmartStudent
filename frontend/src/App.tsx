@@ -15,6 +15,7 @@ import EduStudioPage from './Home/Products/edustudio'
 import GurukulPage from './Home/Products/AIGurukul'
 import SmartPapersPage from './Home/Products/SmartPapers'
 import EZPrepPage from './Home/Products/ezprep'
+import SmartDeck from './Home/Products/SmartDeck'
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
         <Route path='/product/gurukul' element={<GurukulPage /> } />
         <Route path='/product/smartpapers' element={<SmartPapersPage />} />
         <Route path='/product/ezprep' element={<EZPrepPage />} />
+        <Route path='/product/smartdeck' element={<SmartDeck />} />
       </Routes>
     </HashRouter>
   )

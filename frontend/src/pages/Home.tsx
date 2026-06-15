@@ -191,6 +191,8 @@ const [overallFeedback, setOverallFeedback] =
           focus_areas: data.focus_areas,
           selected_rubrics: data.selected_rubrics,
           custom_rubrics: data.custom_rubrics,
+          voice: data.voice,
+          interviewer_name: data.interviewer_name
         })
       })
 

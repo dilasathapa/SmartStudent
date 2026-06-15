@@ -152,12 +152,7 @@ export default function EduStudioPage() {
       {/* Hero */}
       <section className="relative pt-24 flex items-center">
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-zinc-100">
-            <Sparkles className="w-4 h-4 text-zinc-800" />
-            <span className="text-sm text-zinc-800">
-              AI-Powered Educational Video Generation
-            </span>
-          </div>
+          
 
           {/* <h1 className="mt-8 text-5xl md:text-7xl font-bold leading-tight max-w-5xl">
             <span className=" text-[#EECD42]">Turn Any</span>{" "}

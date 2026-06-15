@@ -58,12 +58,6 @@ export default function SmartPapersPage() {
 
         <div className="relative max-w-7xl mx-auto px-6 pb-24">
 
-          <div className="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2">
-          <Sparkles className="w-4 h-4 text-emerald-800" />
-            <span className="text-sm text-emerald-800">
-              AI-Powered Exam Prediction Platform
-            </span>
-          </div>
 
           <div className="max-w-5xl items-center mt-10">
 

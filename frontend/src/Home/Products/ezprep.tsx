@@ -203,21 +203,18 @@ export default function EZPrepPage() {
 
         <div className="relative max-w-7xl mx-auto px-6 pb-24">
 
-          <div className="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 mb-10">
-            <Sparkles className="w-4 h-4 text-emerald-700" />{" "}
-            <span className="text-sm text-emerald-700">
-              AI-Powered Interview Preparation Platform
-            </span>
-          </div>
+          
 
           <div className="gap-16 items-center">
 
             <div>
 
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                Interview Better. 
+              <h1 className="text-5xl md:text-7xl font-bold leading-3 pb-4">
+                Every great 
               </h1>
-              <h1 className="text-5xl md:text-7xl font-bold leading-3 pb-6">Perform Smarter.</h1>
+              <h1 className="text-5xl md:text-7xl font-bold leading-3 pb-4">Interview</h1>
+
+              <h1 className="text-5xl md:text-7xl font-bold leading-3 pb-4">Begins with Practice</h1>
 
               <p className="mt-6 text-xl text-zinc-400 max-w-5xl">
                 Experience a smarter way to prepare for interviews. From dynamic questioning and intelligent evaluation to personalized improvement plans, EzPrep helps learners develop the skills, confidence, and readiness needed for modern hiring processes.

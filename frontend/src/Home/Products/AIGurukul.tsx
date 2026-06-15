@@ -90,12 +90,7 @@ export default function GurukulPage() {
         </div> */}
 
         <div className="relative max-w-7xl mx-auto px-6 pb-24">
-          <div className="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 mb-6">
-            <Sparkles className="w-4 h-4 text-emerald-700" />{" "}
-            <span className="text-sm text-emerald-700">
-              AI-Powered Learning Platform
-            </span>
-          </div>
+          
 
           <div className="gap-16 items-center">
             {/* Left */}
@@ -1371,274 +1366,274 @@ export default function GurukulPage() {
       {/* general Features cards */}
       <section className="max-w-7xl mx-auto px-6 py-32">
 
-  <div className="text-center mb-20">
-    <h2 className="text-5xl md:text-6xl font-bold">
-      Everything Students Need
-      <span className="text-[#EECD42]">
-        {" "}In One Place
-      </span>
-    </h2>
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-bold">
+            Everything Students Need
+            <span className="text-[#EECD42]">
+              {" "}In One Place
+            </span>
+          </h2>
 
-    <p className="mt-6 text-xl text-zinc-500 max-w-3xl mx-auto">
-      From learning and assessments to rankings and analytics,
-      AI Gurukul brings the entire learning journey together.
-    </p>
-  </div>
+          <p className="mt-6 text-xl text-zinc-500 max-w-3xl mx-auto">
+            From learning and assessments to rankings and analytics,
+            AI Gurukul brings the entire learning journey together.
+          </p>
+        </div>
 
-  <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid lg:grid-cols-3 gap-6">
 
-    {/* LEFT COLUMN */}
+          {/* LEFT COLUMN */}
 
-    <motion.div
-      initial={{ opacity: 0, x: -80 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{
-        duration: 0.8,
-        delay: 0.3,
-      }}
-      className="flex flex-col gap-6"
-    >
-      {/* Structured Courses */}
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 0.8,
+              delay: 0.3,
+            }}
+            className="flex flex-col gap-6"
+          >
+            {/* Structured Courses */}
 
-      <div className="bg-white border rounded-3xl p-6 h-[500px]">
+            <div className="bg-white border rounded-3xl p-6 h-[500px]">
 
-        {/* MOCKUP */}
+              {/* MOCKUP */}
 
-        <div className="bg-zinc-50 border rounded-2xl p-5 h-64">
-          <div className="font-semibold">
-            Course Library
-          </div>
-
-          <div className="mt-5 space-y-4">
-
-            {[
-              "Mathematics",
-              "Physics",
-              "Chemistry",
-            ].map((course) => (
-              <div key={course}>
-                <div className="flex justify-between text-sm mb-2">
-                  <span>{course}</span>
-                  <span>75%</span>
+              <div className="bg-zinc-50 border rounded-2xl p-5 h-64">
+                <div className="font-semibold">
+                  Course Library
                 </div>
 
-                <div className="h-2 bg-zinc-200 rounded-full">
-                  <div className="h-full w-3/4 rounded-full bg-[#EECD42]" />
+                <div className="mt-5 space-y-4">
+
+                  {[
+                    "Mathematics",
+                    "Physics",
+                    "Chemistry",
+                  ].map((course) => (
+                    <div key={course}>
+                      <div className="flex justify-between text-sm mb-2">
+                        <span>{course}</span>
+                        <span>75%</span>
+                      </div>
+
+                      <div className="h-2 bg-zinc-200 rounded-full">
+                        <div className="h-full w-3/4 rounded-full bg-[#EECD42]" />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        <h3 className="mt-8 text-2xl font-bold">
-          Structured Courses
-        </h3>
+              <h3 className="mt-8 text-2xl font-bold">
+                Structured Courses
+              </h3>
 
-        <p className="mt-4 text-zinc-500">
-          Follow organized learning paths designed to help students
-          build strong foundations and progress confidently.
-        </p>
-      </div>
+              <p className="mt-4 text-zinc-500">
+                Follow organized learning paths designed to help students
+                build strong foundations and progress confidently.
+              </p>
+            </div>
 
-      {/* Assessments */}
+            {/* Assessments */}
 
-      <div className="bg-white border rounded-3xl p-8 h-[220px]">
+            <div className="bg-white border rounded-3xl p-8 h-[220px]">
 
-        <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center">
-          📝
-        </div>
-
-        <h3 className="mt-6 text-2xl font-bold">
-          Smart Assessments
-        </h3>
-
-        <p className="mt-4 text-zinc-500">
-          Practice through adaptive quizzes
-          designed to strengthen understanding.
-        </p>
-
-      </div>
-    </motion.div>
-
-    {/* CENTER COLUMN */}
-
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: 80,
-        scale: 0.95,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-        scale: 1,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.2,
-      }}
-      transition={{
-        duration: 0.8,
-      }}
-      className="flex flex-col gap-6"
-    >
-      {/* Rankings */}
-
-      <div className="bg-white border rounded-3xl p-8 h-[220px]">
-
-        <div className="text-5xl">
-          🏆
-        </div>
-
-        <h3 className="mt-6 text-2xl font-bold">
-          Student Rankings
-        </h3>
-
-        <p className="mt-4 text-zinc-500">
-          View your course and institute rankings while
-          earning badges for achievements.
-        </p>
-
-      </div>
-
-      {/* Analytics */}
-
-      <div className="bg-white border rounded-3xl p-6 h-[500px]">
-
-        <div className="bg-zinc-50 border rounded-2xl p-5 h-64">
-
-          <div className="font-semibold">
-            Learning Analytics
-          </div>
-
-          <div className="flex items-end gap-3 mt-8 h-32">
-
-            {[40, 65, 50, 85, 70].map((h, i) => (
-              <div
-                key={i}
-                className="flex-1 rounded-t-xl bg-emerald-400"
-                style={{
-                  height: `${h}%`,
-                }}
-              />
-            ))}
-
-          </div>
-
-          <div className="flex justify-between text-xs text-zinc-500 mt-4">
-            <span>Mon</span>
-            <span>Tue</span>
-            <span>Wed</span>
-            <span>Thu</span>
-            <span>Fri</span>
-          </div>
-
-        </div>
-
-        <h3 className="mt-8 text-2xl font-bold">
-          Learning Analytics
-        </h3>
-
-        <p className="mt-4 text-zinc-500">
-          Understand strengths, weaknesses and learning
-          patterns through detailed insights.
-        </p>
-
-      </div>
-    </motion.div>
-
-    {/* RIGHT COLUMN */}
-
-    <motion.div
-      initial={{
-        opacity: 0,
-        x: 80,
-      }}
-      whileInView={{
-        opacity: 1,
-        x: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.2,
-      }}
-      transition={{
-        duration: 0.8,
-        delay: 0.6,
-      }}
-      className="flex flex-col gap-6"
-    >
-      {/* Progress Tracking */}
-
-      <div className="bg-white border rounded-3xl p-6 h-[500px]">
-
-        <div className="bg-zinc-50 border rounded-2xl p-5 h-64">
-
-          <div className="font-semibold">
-            Progress Overview
-          </div>
-
-          <div className="mt-8 flex justify-center">
-
-            <div className="relative w-36 h-36 rounded-full border-[12px] border-zinc-200">
-
-              <div
-                className="
-                  absolute
-                  inset-0
-                  rounded-full
-                  border-[12px]
-                  border-transparent
-                  border-t-[#EECD42]
-                  rotate-45
-                "
-              />
-
-              <div className="absolute inset-0 flex items-center justify-center font-bold text-2xl">
-                78%
+              <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center">
+                📝
               </div>
+
+              <h3 className="mt-6 text-2xl font-bold">
+                Smart Assessments
+              </h3>
+
+              <p className="mt-4 text-zinc-500">
+                Practice through adaptive quizzes
+                designed to strengthen understanding.
+              </p>
+
+            </div>
+          </motion.div>
+
+          {/* CENTER COLUMN */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 80,
+              scale: 0.95,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+            className="flex flex-col gap-6"
+          >
+            {/* Rankings */}
+
+            <div className="bg-white border rounded-3xl p-8 h-[220px]">
+
+              <div className="text-5xl">
+                🏆
+              </div>
+
+              <h3 className="mt-6 text-2xl font-bold">
+                Student Rankings
+              </h3>
+
+              <p className="mt-4 text-zinc-500">
+                View your course and institute rankings while
+                earning badges for achievements.
+              </p>
 
             </div>
 
-          </div>
+            {/* Analytics */}
+
+            <div className="bg-white border rounded-3xl p-6 h-[500px]">
+
+              <div className="bg-zinc-50 border rounded-2xl p-5 h-64">
+
+                <div className="font-semibold">
+                  Learning Analytics
+                </div>
+
+                <div className="flex items-end gap-3 mt-8 h-32">
+
+                  {[40, 65, 50, 85, 70].map((h, i) => (
+                    <div
+                      key={i}
+                      className="flex-1 rounded-t-xl bg-emerald-400"
+                      style={{
+                        height: `${h}%`,
+                      }}
+                    />
+                  ))}
+
+                </div>
+
+                <div className="flex justify-between text-xs text-zinc-500 mt-4">
+                  <span>Mon</span>
+                  <span>Tue</span>
+                  <span>Wed</span>
+                  <span>Thu</span>
+                  <span>Fri</span>
+                </div>
+
+              </div>
+
+              <h3 className="mt-8 text-2xl font-bold">
+                Learning Analytics
+              </h3>
+
+              <p className="mt-4 text-zinc-500">
+                Understand strengths, weaknesses and learning
+                patterns through detailed insights.
+              </p>
+
+            </div>
+          </motion.div>
+
+          {/* RIGHT COLUMN */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: 80,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.6,
+            }}
+            className="flex flex-col gap-6"
+          >
+            {/* Progress Tracking */}
+
+            <div className="bg-white border rounded-3xl p-6 h-[500px]">
+
+              <div className="bg-zinc-50 border rounded-2xl p-5 h-64">
+
+                <div className="font-semibold">
+                  Progress Overview
+                </div>
+
+                <div className="mt-8 flex justify-center">
+
+                  <div className="relative w-36 h-36 rounded-full border-[12px] border-zinc-200">
+
+                    <div
+                      className="
+                        absolute
+                        inset-0
+                        rounded-full
+                        border-[12px]
+                        border-transparent
+                        border-t-[#EECD42]
+                        rotate-45
+                      "
+                    />
+
+                    <div className="absolute inset-0 flex items-center justify-center font-bold text-2xl">
+                      78%
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <h3 className="mt-8 text-2xl font-bold">
+                Progress Tracking
+              </h3>
+
+              <p className="mt-4 text-zinc-500">
+                Monitor completion rates, learning consistency
+                and academic growth over time.
+              </p>
+
+            </div>
+
+            {/* AI Recommendations */}
+
+            <div className="bg-white border rounded-3xl p-8 h-[220px]">
+
+              <div className="w-12 h-12 rounded-2xl bg-cyan-100 flex items-center justify-center">
+                ✨
+              </div>
+
+              <h3 className="mt-6 text-2xl font-bold">
+                AI Recommendations
+              </h3>
+
+              <p className="mt-4 text-zinc-500">
+                Get personalized suggestions on what to learn,
+                revise and practice next.
+              </p>
+
+            </div>
+          </motion.div>
 
         </div>
 
-        <h3 className="mt-8 text-2xl font-bold">
-          Progress Tracking
-        </h3>
-
-        <p className="mt-4 text-zinc-500">
-          Monitor completion rates, learning consistency
-          and academic growth over time.
-        </p>
-
-      </div>
-
-      {/* AI Recommendations */}
-
-      <div className="bg-white border rounded-3xl p-8 h-[220px]">
-
-        <div className="w-12 h-12 rounded-2xl bg-cyan-100 flex items-center justify-center">
-          ✨
-        </div>
-
-        <h3 className="mt-6 text-2xl font-bold">
-          AI Recommendations
-        </h3>
-
-        <p className="mt-4 text-zinc-500">
-          Get personalized suggestions on what to learn,
-          revise and practice next.
-        </p>
-
-      </div>
-    </motion.div>
-
-  </div>
-
-</section>
+      </section>
 
      
 
